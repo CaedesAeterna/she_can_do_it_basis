@@ -37,7 +37,13 @@ This project is a monorepo containing two applications:
 
 ### Development Mode
 
-Open two separate terminal windows/tabs:
+You can run both applications simultaneously using a single command:
+```bash
+# Starts both applications concurrently
+$ npm run start:all
+```
+
+Or open two separate terminal windows/tabs to run them individually:
 
 **1. Customer Application:**
 ```bash

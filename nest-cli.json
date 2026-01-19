@@ -16,7 +16,8 @@
       "entryFile": "main",
       "sourceRoot": "apps/food-waste-cms/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/food-waste-cms/tsconfig.app.json"
+        "tsConfigPath": "apps/food-waste-cms/tsconfig.app.json",
+        "plugins": ["@nestjs/swagger"]
       }
     },
     "food-waste-customer": {
@@ -25,7 +26,8 @@
       "entryFile": "main",
       "sourceRoot": "apps/food-waste-customer/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/food-waste-customer/tsconfig.app.json"
+        "tsConfigPath": "apps/food-waste-customer/tsconfig.app.json",
+        "plugins": ["@nestjs/swagger"]
       }
     }
   }
