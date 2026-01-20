@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Attempt to add common Node paths to PATH
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin:/c/Program Files/nodejs"
+
+# Check if node exists
+if ! command -v node >/dev/null 2>&1; then
+  echo "Error: 'node' command not found. Please ensure Node.js is installed and in your PATH."
+  echo "Current PATH: $PATH"
+  exit 1
+fi
+
+# Run lint-staged directly via node to avoid symlink/OS issues
+node ./node_modules/lint-staged/bin/lint-staged.js
