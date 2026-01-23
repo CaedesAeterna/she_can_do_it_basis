@@ -1,0 +1,38 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  DOCKER_TLS_CERTDIR: ""
+
+services:
+  - docker:dind
+
+build:
+  stage: build
+  image: docker:24
+  script:
+    - python scripts/build.py
+  rules:
+    - if: '$CI_COMMIT_BRANCH'  
+
+test:
+  stage: test
+  image: docker:24
+  services:
+    - docker:dind
+  script:
+    - python scripts/test.py
+  rules:
+    - if: '$CI_COMMIT_BRANCH'  
+
+deploy:
+  stage: deploy
+  image: python:3.10-alpine
+  before_script:
+    - apk add --no-cache openssh
+  script:
+    - python scripts/deploy.py
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"' 
